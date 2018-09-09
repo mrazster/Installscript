@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # I'm a n00b just playing around and trying to create my own installscript for xfce4 desktop #
-# Intended for personal use and needs, I would gladly take any advice and constrictive feedback #
+# The scripts is originally from Joe Collinsn (https://www.ezeelinux.com/) but has been modified by me. #
+# Intended for personal use and needs, I would gladly take any advice and constrictive feedback. #
 # Michael Mraz, mrazster@gmail.com # 
 
 echo "*** OK, let's go ! ***"
@@ -46,22 +47,19 @@ echo "*** Wine Repo ***"
 sudo dpkg --add-architecture i386
 wget -qO- https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
 sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/ -yy
-
+sudo apt update
 
 
 echo "*** Install DE and corepackages ***"
 
 sudo apt install aptitude -yy
+sudo aptitude install xubuntu-core^ xfce4-goodies mousepad gtk2-engines-xfce gtk3-engines-xfce mdadm dmraid xinit dkms nvidia-driver-396 nvidia-dkms-396 gdebi synaptic linux-firmware nouveau-firmware update-manager 
+vdpau-driver-all gnome-disk-utility lightdm-gtk-greeter-settings -yy
 
-sudo aptitude install xfce4-session xfce4 xfwm4-themes gtk2-engines-xfce gtk3-engines-xfce xfce4-goodies  thunar xfce4-terminal mdadm dmraid xinit dkms nvidia-driver-396 nvidia-dkms-396 gdebi synaptic linux-firmware nouveau-firmware update-manager 
-vdpau-driver-all gnome-disk-utility lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings -yy
 
+echo "*** Remove undesirable deb/snap packages and install from apt. (When installing a full dist) ***"
 
-#echo "*** Remove undesirable deb/snap packages and install from apt. (When installing a full dist) ***"
-
-#sudo apt purge gdm bluez gnome-keyring -yy
-#sudo snap remove gnome-characters gnome-calculator gnome-system-monitor -yy
-#sudo aptitude install gnome-characters gnome-calculator gnome-system-monitor -yy
+sudo apt purge bluez bluez-cups cups cups-client cups-filters hplip snapd
 
 
 #echo "*** Purge Firefox, install Waterfox (when installing a full Dist) ***"
@@ -78,9 +76,14 @@ vdpau-driver-all gnome-disk-utility lightdm lightdm-gtk-greeter lightdm-gtk-gree
 
 echo "*** Install reqired packages ***"
 
-sudo aptitude install gthumb htop gthumb adwaita-icon-theme-full argyll chameleon-cursor-theme colord cpufrequtils darktable gimp gimp-help-sv gimp-lensfun gimp-data-extras gnome-mpv gtk2-engines gtk2-engines-murrine hdparm hddtemp i2c-tools icc-profiles icc-profiles-free intel-microcode neofetch ntfs-3g ntfs-config plymouth plymouth-x11 preload samba smbclient steam:i386 timeshift kdenlive etcher-electron spotify-client evince evolution vlc ttf-mscorefonts-installer piper xubuntu-restricted-extras -yy
+sudo aptitude install gthumb htop gthumb adwaita-icon-theme-full argyll chameleon-cursor-theme colord cpufrequtils darktable gimp gimp-help-sv gimp-lensfun gimp-data-extras gnome-mpv gtk2-engines gtk2-engines-murrine hdparm hddtemp i2c-tools icc-profiles icc-profiles-free intel-microcode neofetch ntfs-3g ntfs-config plymouth plymouth-x11 preload samba smbclient steam:i386 timeshift kdenlive etcher-electron spotify-client evince evolution vlc ttf-mscorefonts-installer piper xubuntu-restricted-extras gnome-icon-theme gnome-themes-standard autoconf automake pkg-config libgtk-3-dev -yy
 sudo aptitude install --install-recommends winehq-staging winetricks -yy
 
+
+echo "*** Download Arc-theme and icons ***"
+
+git clone https://github.com/horst3180/arc-theme --depth 1
+git clone https://github.com/horst3180/arc-icon-theme --depth 1
 
 
 echo "*** Make Qt apps look beter in Gtk ***"
