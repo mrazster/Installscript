@@ -4,8 +4,6 @@
 # Intended for personal use and needs, I would gladly take any advice and constrictive feedback #
 # Michael Mraz, mrazster@gmail.com # 
 
-# First, let's install a bunch of software:
-
 echo "*** OK, let's go ! ***"
 
 echo "*** First add 3rd party repos ***"
@@ -44,40 +42,45 @@ echo "*** Etcher Repo ***"
 echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | sudo tee /etc/apt/sources.list.d/etcher.list
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
 
+echo "*** Install Wine-Staging ***"
+sudo dpkg --add-architecture i386
+wget -qO- https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
+sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/ -yy
+
 
 
 echo "*** Install DE and corepackages ***"
 
 sudo apt install aptitude -yy
 
-sudo aptitude install xfce4-session xfce4 xfwm4-themes gtk2-engines-xfce gtk3-engines-xfce xfce4-goodies xubuntu-restricted-extras thunar xfce4-terminal mdadm dmraid xinit dkms nvidia-driver-396 nvidia-dkms-396 gdebi synaptic snap linux-firmware nouveau-firmware screen-resolution-extra update-manager vdpau-driver-all gnome-disk-utility lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings -yy
+sudo aptitude install xfce4-session xfce4 xfwm4-themes gtk2-engines-xfce gtk3-engines-xfce xfce4-goodies  thunar xfce4-terminal mdadm dmraid xinit dkms nvidia-driver-396 nvidia-dkms-396 gdebi synaptic linux-firmware nouveau-firmware update-manager 
+vdpau-driver-all gnome-disk-utility lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings -yy
 
 
-#echo "*** Remove undesirable deb/snap packages and install from apt. ***"
+#echo "*** Remove undesirable deb/snap packages and install from apt. (When installing a full dist) ***"
 
 #sudo apt purge gdm bluez gnome-keyring -yy
 #sudo snap remove gnome-characters gnome-calculator gnome-system-monitor -yy
 #sudo aptitude install gnome-characters gnome-calculator gnome-system-monitor -yy
 
 
-#echo "*** Purge Firefox, install Waterfox ***"
+#echo "*** Purge Firefox, install Waterfox (when installing a full Dist) ***"
 
 #rm -r .mozilla .cache/mozilla sudo apt purge firefox -yy
-#sudo apt purge firefox-locale-en purge firefox-locale-sv -yy mkdir /tmp/gc-install-tmp pushd /tmp/gc-install-tmp wget "url to download the app" 
-#sudo gdebi -n "appname" popd rm -rf /tmp/gc-install-tmp
+#sudo apt purge firefox-locale-en purge firefox-locale-sv -yy 
+#mkdir /tmp/gc-install-tmp 
+#pushd /tmp/gc-install-tmp 
+#wget "url to download the app" 
+#sudo gdebi -n "appname"
+#popd 
+#rm -rf /tmp/gc-install-tmp
 
 
 echo "*** Install reqired packages ***"
 
-sudo aptitude install gthumb htop grsync git vlc gthumb tracker adwaita-icon-theme-full argyll chameleon-cursor-theme colord cpufrequtils darktable flatpak gimp gimp-help-sv gimp-lensfun gimp-data-extras gnome-mpv flatpak gtk2-engines gtk2-engines-murrine hdparm hddtemp i2c-tools icc-profiles icc-profiles-free intel-microcode neofetch ntfs-3g ntfs-config plymouth plymouth-x11 preload samba smbclient steam:i386 timeshift tumbler tumbler-common tumbler-plugins-extra kdenlive etcher-electron spotify-client snap evince evolution vlc ttf-mscorefonts-installer -yy
+sudo aptitude install gthumb htop gthumb adwaita-icon-theme-full argyll chameleon-cursor-theme colord cpufrequtils darktable gimp gimp-help-sv gimp-lensfun gimp-data-extras gnome-mpv gtk2-engines gtk2-engines-murrine hdparm hddtemp i2c-tools icc-profiles icc-profiles-free intel-microcode neofetch ntfs-3g ntfs-config plymouth plymouth-x11 preload samba smbclient steam:i386 timeshift kdenlive etcher-electron spotify-client evince evolution vlc ttf-mscorefonts-installer piper xubuntu-restricted-extras -yy
+sudo aptitude install --install-recommends winehq-staging winetricks -yy
 
-
-echo "*** Install Wine-Staging ***"
-
-sudo dpkg --add-architecture i386
-wget -qO- https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
-sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/ -yy
-sudo apt-get install --install-recommends winehq-staging winetricks -yy
 
 
 echo "*** Make Qt apps look beter in Gtk ***"
