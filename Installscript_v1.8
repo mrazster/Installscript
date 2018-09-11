@@ -53,7 +53,7 @@ sudo apt update
 echo "*** Install DE and corepackages ***"
 
 sudo apt install aptitude -yy
-sudo aptitude install xubuntu-core^ xfce4-goodies mousepad gtk2-engines-xfce gtk3-engines-xfce mdadm dmraid xinit dkms nvidia-driver-396 nvidia-dkms-396 gdebi synaptic linux-firmware nouveau-firmware update-manager 
+sudo aptitude install xubuntu-core^ xfce4-goodies gtk2-engines-xfce gtk3-engines-xfce mdadm dmraid xinit dkms nvidia-driver-396 nvidia-dkms-396 gdebi synaptic linux-firmware nouveau-firmware \
 vdpau-driver-all gnome-disk-utility lightdm-gtk-greeter-settings -yy
 
 
@@ -76,11 +76,11 @@ sudo apt purge bluez bluez-cups cups cups-client cups-filters hplip snapd
 
 echo "*** Install reqired packages ***"
 
-sudo aptitude install gthumb htop gthumb adwaita-icon-theme-full argyll chameleon-cursor-theme colord cpufrequtils darktable gimp gimp-help-sv gimp-lensfun gimp-data-extras gnome-mpv gtk2-engines gtk2-engines-murrine hdparm hddtemp i2c-tools icc-profiles icc-profiles-free intel-microcode neofetch ntfs-3g ntfs-config plymouth plymouth-x11 preload samba smbclient steam:i386 timeshift kdenlive etcher-electron spotify-client evince evolution vlc ttf-mscorefonts-installer piper xubuntu-restricted-extras gnome-icon-theme gnome-themes-standard autoconf automake pkg-config libgtk-3-dev -yy
-sudo aptitude install --install-recommends winehq-staging winetricks -yy
+sudo aptitude install gthumb htop gthumb adwaita-icon-theme-full argyll chameleon-cursor-theme colord cpufrequtils darktable gimp gimp-help-sv gimp-lensfun gimp-data-extras gtk2-engines gtk2-engines-murrine hdparm hddtemp i2c-tools icc-profiles icc-profiles-free intel-microcode neofetch ntfs-3g ntfs-config plymouth plymouth-x11 preload samba smbclient steam:i386 timeshift kdenlive etcher-electron spotify-client evince vlc ttf-mscorefonts-installer xubuntu-restricted-extras gnome-icon-theme gnome-themes-standard autoconf automake pkg-config libgtk-3-dev \
+kernel-package libncurses5-dev flex bison libelf-dev elfutils fakeroot wget bzip2 libappstreamqt-dev build-essential libncurses5-dev libssl-dev ccache gcc libssl-dev bc winehq-staging winetricks cpu-x -yy
 
 
-echo "*** Download Arc-theme and icons ***"
+echo "*** Download Arc-theme and icons, from source. ***"
 
 git clone https://github.com/horst3180/arc-theme --depth 1
 git clone https://github.com/horst3180/arc-icon-theme --depth 1
