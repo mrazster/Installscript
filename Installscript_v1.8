@@ -1,32 +1,38 @@
 #!/bin/bash
 
-# I'm a n00b just playing around and trying to create my own installscript for xfce4 desktop #
+# I'm a n00b, just playing around and trying to create my own installscript for xfce4/xubuntu desktop #
 # The scripts is originally from Joe Collins (https://www.ezeelinux.com/) but has been modified by me. #
-# Intended for personal use and needs, I would gladly take any advice and constrictive feedback. #
+# It´ s intended for personal use and needs, and may wary depending on distro, DE or packages I need to install. #
+# I would gladly take any advice and constrictive feedback. #
 # Michael Mraz, mrazster@gmail.com # 
 
 echo "*** OK, let's go ! ***"
 
 echo "*** First add 3rd party repos ***"
 
-sudo apt install software-properties-common wget -yy
+sudo apt install software-properties-common wget git -yy
 
-sudo add-apt-repository ppa:graphics-drivers/ppa -y
 sudo add-apt-repository ppa:otto-kesselgulasch/gimp -y
 sudo add-apt-repository ppa:kubuntu-ppa/backports -y
 sudo add-apt-repository ppa:gnome3-team/gnome3 -y
 sudo add-apt-repository ppa:nilarimogard/webupd8 -y
-sudo add-apt-repository ppa:teejee2008/ppa -y
 sudo add-apt-repository ppa:libreoffice/ppa -y
 sudo add-apt-repository ppa:videolan/master-daily -y
-sudo apt-add-repository ppa:teejee2008/ppa -y
 sudo add-apt-repository ppa:openshot.developers/libopenshot-daily -y
 sudo add-apt-repository ppa:papirus/papirus -y
 sudo add-apt-repository ppa:numix/ppa -y
 sudo add-apt-repository ppa:moka/daily -y
 sudo add-apt-repository ppa:damentz/liquorix -y
 sudo add-apt-repository ppa:paulo-miguel-dias/pkppa -y
+sudo add-apt-repository ppa:paulo-miguel-dias/mesa -y
 sudo add-apt-repository ppa:trebelnik-stefina/ratbag-piper -y
+sudo add-apt-repository ppa:xuzhen666/gnome-mpv -y
+sudo add-apt-repository ppa:pmjdebruijn/darktable-release -y
+sudo add-apt-repository ppa:tista/adapta -y
+sudo add-apt-repository ppa:alexlarsson/flatpak -y
+sudo add-apt-repository ppa:xubuntu-dev/ppa -y
+sudo add-apt-repository ppa:andreas-angerer89/sni-qt-patched -y
+sudo add-apt-repository ppa:teejee2008/ppa -y
 sudo apt update
 
 echo "*** Spotify Repo ***"
@@ -45,27 +51,25 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
 
 echo "*** Wine Repo ***"
 sudo dpkg --add-architecture i386
-wget -qO- https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
-sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/ -yy
-sudo apt update
+wget -nc https://dl.winehq.org/wine-builds/winehq.key
+sudo apt-key add winehq.key
+sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
 
 
 echo "*** Install DE and corepackages ***"
 
-sudo apt install aptitude -yy
-sudo aptitude install xubuntu-core^ xfce4-goodies gtk2-engines-xfce gtk3-engines-xfce mdadm dmraid xinit dkms nvidia-driver-396 nvidia-dkms-396 gdebi synaptic linux-firmware nouveau-firmware \
-vdpau-driver-all gnome-disk-utility lightdm-gtk-greeter-settings -yy
+sudo apt install xubuntu-core^ xubuntu-restricted-extras xubuntu-restricted-addons xfce4-goodies gtk2-engines-xfce gtk3-engines-xfce lightdm-gtk-greeter-settings mdadm dmraid dkms gdebi synaptic linux-firmware gnome-disk-utility gdebi -yy
 
 
 echo "*** Remove undesirable deb/snap packages and install from apt. (When installing a full dist) ***"
 
-sudo apt purge bluez bluez-cups cups cups-client cups-filters hplip snapd
+sudo apt purge bluez bluez-cups cups cups-client cups-filters hplip -yy
 
 
 #echo "*** Purge Firefox, install Waterfox (when installing a full Dist) ***"
 
 #rm -r .mozilla .cache/mozilla sudo apt purge firefox -yy
-#sudo apt purge firefox-locale-en purge firefox-locale-sv -yy 
+#sudo apt purge firefox-locale-en purge firefox-locale-sv -yy
 #mkdir /tmp/gc-install-tmp 
 #pushd /tmp/gc-install-tmp 
 #wget "url to download the app" 
@@ -74,10 +78,9 @@ sudo apt purge bluez bluez-cups cups cups-client cups-filters hplip snapd
 #rm -rf /tmp/gc-install-tmp
 
 
-echo "*** Install reqired packages ***"
+echo "*** Install reqired aplications and packages ***"
 
-sudo aptitude install gthumb htop gthumb adwaita-icon-theme-full argyll chameleon-cursor-theme colord cpufrequtils darktable gimp gimp-help-sv gimp-lensfun gimp-data-extras gtk2-engines gtk2-engines-murrine hdparm hddtemp i2c-tools icc-profiles icc-profiles-free intel-microcode neofetch ntfs-3g ntfs-config plymouth plymouth-x11 preload samba smbclient steam-installer steam:i386 timeshift kdenlive etcher-electron spotify-client evince vlc ttf-mscorefonts-installer xubuntu-restricted-extras gnome-icon-theme gnome-themes-standard autoconf automake pkg-config libgtk-3-dev \
-kernel-package libncurses5-dev flex bison libelf-dev elfutils fakeroot wget bzip2 libappstreamqt-dev build-essential libncurses5-dev libssl-dev ccache gcc libssl-dev bc winehq-staging winetricks cpu-x -yy
+sudo apt install gnome-disk-utility firefox htop argyll dispcalgui chameleon-cursor-theme colord colord-kde cpufrequtils darktable gimp gimp-help-sv gimp-lensfun gimp-data-extras hdparm hddtemp i2c-tools icc-profiles icc-profiles-free intel-microcode neofetch ntfs-3g preload samba smbclient steam-installer kdenlive spotify-client evince vlc ttf-mscorefonts-installer kubuntu-restricted-extras kubuntu-restricted-addons gnome-icon-theme gnome-themes-standard autoconf automake pkg-config libgtk-3-dev kernel-package libncurses5-dev flex bison libelf-dev elfutils fakeroot wget bzip2 libappstreamqt-dev build-essential libncurses5-dev libssl-dev ccache gcc libssl-dev bc git wget etcher-electron ttf-mscorefonts-installer -yy
 
 
 echo "*** Download Arc-theme and icons, from source. ***"
@@ -90,6 +93,12 @@ echo "*** Make Qt apps look beter in Gtk ***"
 
 sudo apt install qt5-style-plugins -yy
 sudo bash -c "echo 'QT_QPA_PLATFORMTHEME=gtk2' >> /etc/environment"
+
+
+
+echo "*** Install video/nvidiadrivers ***"
+
+sudo apt install nvidia-driver-415 nvidia-dkms-415 vdpau-driver-all
 
 
 echo "*** All done! Time to reboot and enjoy. ***"
