@@ -2,7 +2,7 @@
 
 # I'm a n00b, just playing around and trying to create my own installscript for xfce4/xubuntu desktop #
 # The scripts is originally from Joe Collins (https://www.ezeelinux.com/) but has been modified by me. #
-# It´ s intended for personal use and needs, and may wary depending on distro, DE or packages I need to install. #
+# It´ s intended for personal use and needs, and may wary depending on distro, DE or packages I need to install.#
 # I would gladly take any advice and constrictive feedback. #
 # Michael Mraz, mrazster@gmail.com # 
 
@@ -12,9 +12,12 @@ echo "*** First add 3rd party repos ***"
 
 sudo apt install software-properties-common wget git -yy
 
-sudo add-apt-repository ppa:otto-kesselgulasch/gimp -y
+sudo add-apt-repository ppa:xubuntu-dev/ppa -y
+sudo add-apt-repository ppa:xubuntu-dev/experimental -y
 sudo add-apt-repository ppa:kubuntu-ppa/backports -y
 sudo add-apt-repository ppa:gnome3-team/gnome3 -y
+sudo add-apt-repository ppa:graphics-drivers/ppa -y
+sudo add-apt-repository ppa:graphics-drivers/dev -y
 sudo add-apt-repository ppa:nilarimogard/webupd8 -y
 sudo add-apt-repository ppa:libreoffice/ppa -y
 sudo add-apt-repository ppa:videolan/master-daily -y
@@ -27,12 +30,16 @@ sudo add-apt-repository ppa:paulo-miguel-dias/pkppa -y
 sudo add-apt-repository ppa:paulo-miguel-dias/mesa -y
 sudo add-apt-repository ppa:trebelnik-stefina/ratbag-piper -y
 sudo add-apt-repository ppa:xuzhen666/gnome-mpv -y
+sudo add-apt-repository ppa:xuzhen666/dockbarx -y
 sudo add-apt-repository ppa:pmjdebruijn/darktable-release -y
 sudo add-apt-repository ppa:tista/adapta -y
 sudo add-apt-repository ppa:alexlarsson/flatpak -y
-sudo add-apt-repository ppa:xubuntu-dev/ppa -y
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp -y
 sudo add-apt-repository ppa:andreas-angerer89/sni-qt-patched -y
 sudo add-apt-repository ppa:teejee2008/ppa -y
+sudo add-apt-repository ppa:team-xbmc/ppa -y
+sudo add-apt-repository ppa:snappy-dev/edge -y
+sudo add-apt-repository ppa:fossfreedom/rhythmbox-plugins -y
 sudo apt update
 
 echo "*** Spotify Repo ***"
@@ -58,7 +65,7 @@ sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic ma
 
 echo "*** Install DE and corepackages ***"
 
-sudo apt install xubuntu-core^ xubuntu-restricted-extras xubuntu-restricted-addons xfce4-goodies gtk2-engines-xfce gtk3-engines-xfce lightdm-gtk-greeter-settings mdadm dmraid dkms gdebi synaptic linux-firmware gnome-disk-utility gdebi -yy
+sudo apt install xfce4 xorg xinit thunar thunar-volman xfce4-goodies gtk2-engines-xfce gtk3-engines-xfce lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings mdadm dmraid dkms gdebi synaptic linux-firmware gdebi xfce4-terminal xubuntu-restricted-extras xubuntu-restricted-addons software-properties-gtk synaptic -yy
 
 
 echo "*** Remove undesirable deb/snap packages and install from apt. (When installing a full dist) ***"
@@ -66,21 +73,10 @@ echo "*** Remove undesirable deb/snap packages and install from apt. (When insta
 sudo apt purge bluez bluez-cups cups cups-client cups-filters hplip -yy
 
 
-#echo "*** Purge Firefox, install Waterfox (when installing a full Dist) ***"
-
-#rm -r .mozilla .cache/mozilla sudo apt purge firefox -yy
-#sudo apt purge firefox-locale-en purge firefox-locale-sv -yy
-#mkdir /tmp/gc-install-tmp 
-#pushd /tmp/gc-install-tmp 
-#wget "url to download the app" 
-#sudo gdebi -n "appname"
-#popd 
-#rm -rf /tmp/gc-install-tmp
-
 
 echo "*** Install reqired aplications and packages ***"
 
-sudo apt install gnome-disk-utility firefox htop argyll dispcalgui chameleon-cursor-theme colord colord-kde cpufrequtils darktable gimp gimp-help-sv gimp-lensfun gimp-data-extras hdparm hddtemp i2c-tools icc-profiles icc-profiles-free intel-microcode neofetch ntfs-3g preload samba smbclient steam-installer kdenlive spotify-client evince vlc ttf-mscorefonts-installer kubuntu-restricted-extras kubuntu-restricted-addons gnome-icon-theme gnome-themes-standard autoconf automake pkg-config libgtk-3-dev kernel-package libncurses5-dev flex bison libelf-dev elfutils fakeroot wget bzip2 libappstreamqt-dev build-essential libncurses5-dev libssl-dev ccache gcc libssl-dev bc git wget etcher-electron ttf-mscorefonts-installer -yy
+sudo apt install gnome-disk-utility firefox htop argyll dispcalgui chameleon-cursor-theme colord colord-gtk-utils xiccd cpufrequtils darktable gimp gimp-help-sv gimp-lensfun gimp-data-extras hdparm hddtemp i2c-tools icc-profiles icc-profiles-free intel-microcode neofetch ntfs-3g preload samba smbclient steam-installer spotify-client evince vlc ttf-mscorefonts-installer gnome-icon-theme gnome-themes-standard autoconf automake pkg-config libgtk-3-dev kernel-package libncurses5-dev flex bison libelf-dev elfutils fakeroot wget bzip2 libappstreamqt-dev build-essential libncurses5-dev libssl-dev ccache gcc libssl-dev bc git wget etcher-electron psensor lm-sensors rhythmbox rhythmbox-plugins rhythmbox-plugin-alternative-toolbar rhythmbox-plugin-zeitgeist guake -yy
 
 
 echo "*** Download Arc-theme and icons, from source. ***"
