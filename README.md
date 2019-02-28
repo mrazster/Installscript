@@ -1,4 +1,4 @@
-# mrazster-personal
+# Installscript
 
 I'm a n00b, just playing around and trying to create my own installscript for xfce4/xubuntu desktop.
 The scripts is originally from Joe Collins (https://www.ezeelinux.com/) but has been modified by me.
