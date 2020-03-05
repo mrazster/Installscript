@@ -11,4 +11,4 @@ Then either download the script with wget, make it executable and run it.
 Or download it before hand, make it executable, put it on a usb device and run it from there. 
 
 I would gladly take any advice and constrictive feedback.
-Michael Mraz, mrazster@gmail.com 
+Michael Mraz, mrazster"@"protonmail.com (remove ") 
